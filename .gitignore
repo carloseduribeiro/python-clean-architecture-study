@@ -1,4 +1,5 @@
-**/__pycachoe__
+**/__pycache__
 venv
 outros
 storage.db
+.pytest_cache
