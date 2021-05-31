@@ -1,30 +1,28 @@
 # pylint: disable=E1101
 
-from collections import namedtuple
+from src.domain.models import Users
 from src.infra.config import DBConnectionHandler
-from src.infra.entities import Users
+from src.infra.entities import Users as UsersModel
 
 
 class UserRepository:
     """Class to manage User Repository"""
 
     @classmethod
-    def insert_user(cls, name: str, password: str) -> Users:
+    def insert_user(cls, name: str, password: str) -> UsersModel:
         """Insert data in user entity
         :param - name: person name.
                - password: user password.
         :return - tuple with new user inserted.
         """
 
-        InsertData = namedtuple("Users", "id name password")
-
         with DBConnectionHandler() as db_connection:
             try:
-                new_user = Users(name=name, password=password)
+                new_user = UsersModel(name=name, password=password)
                 db_connection.session.add(new_user)
                 db_connection.session.commit()
 
-                return InsertData(new_user.id, new_user.name, new_user.password)
+                return Users(new_user.id, new_user.name, new_user.password)
             except:
                 db_connection.rollback()
                 raise
