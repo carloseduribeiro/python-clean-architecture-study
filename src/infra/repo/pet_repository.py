@@ -1,12 +1,13 @@
 # pylint: disable=E1101
 
 from typing import List
+from src.data.interfaces.pet_repository_interface import PetRepositoryInterface
 from src.domain.models.pets import Pets
 from src.infra.config.db_config import DBConnectionHandler
 from src.infra.entities.pets import Pets as PetsModel
 
 
-class PetRepository:
+class PetRepository(PetRepositoryInterface):
     """Class to manage Pet Repository"""
 
     @classmethod

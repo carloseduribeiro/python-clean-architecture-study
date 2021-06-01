@@ -1,16 +1,17 @@
 # pylint: disable=E1101
 
 from typing import List
+from src.data.interfaces.user_repository_interface import UserRepositoryInterface
 from src.domain.models import Users
 from src.infra.config import DBConnectionHandler
 from src.infra.entities import Users as UsersModel
 
 
-class UserRepository:
+class UserRepository(UserRepositoryInterface):
     """Class to manage User Repository"""
 
     @classmethod
-    def insert_user(cls, name: str, password: str) -> UsersModel:
+    def insert_user(cls, name: str, password: str) -> Users:
         """Insert data in user entity
         :param - name: person name.
                - password: user password.
