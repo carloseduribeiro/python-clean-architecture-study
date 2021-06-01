@@ -15,3 +15,10 @@ class Users(Base):
 
     def __rap__(self):
         return f"Usr [name={self.name}]"
+
+    def __eq__(self, other):
+        return (
+            self.id == other.id
+            and self.name == other.name
+            and self.password == other.password
+        )
