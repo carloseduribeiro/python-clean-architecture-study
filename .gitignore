@@ -3,3 +3,5 @@ venv
 outros
 storage.db
 .pytest_cache
+.vscode
+.idea
